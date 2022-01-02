@@ -16,7 +16,7 @@ const register = async (req, res) => {
 
     //save user and respond
     const user = await newUser.save();
-    if (req.body.saveInfo) {
+    if (req.body.saveInfo === true) {
       token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {});
     } else {
       token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -46,7 +46,7 @@ const login = async (req, res) => {
     );
     !validPassword && res.status(400).json("wrong password");
 
-    if (req.body.saveInfo) {
+    if (req.body.saveInfo === true) {
       token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {});
     } else {
       token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {

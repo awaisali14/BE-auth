@@ -9,6 +9,6 @@ const {
 
 router.route("/register").post(register);
 router.route("/login").post(login);
-router.route("/login").get(authenticate, getUser);
+router.route("/user").get(authenticate, getUser);
 
 module.exports = router;
